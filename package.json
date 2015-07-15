@@ -1,5 +1,5 @@
 {
-  "name": "es6-library-boilerplate",
+  "name": "fineuploader-client-knockout",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/esbenp/es6-library-boilerplate.git"
+    "url": "http://github.com/esbenp/fineuploader-client-knockout.git"
   },
   "author": "Esben Petersen <esbenspetersen@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/esbenp/es6-library-boilerplate/issues"
+    "url": "https://github.com/esbenp/fineuploader-client-knockout/issues"
   },
-  "homepage": "https://github.com/esbenp/es6-library-boilerplate",
+  "homepage": "https://github.com/esbenp/fineuploader-client-knockout",
   "devDependencies": {
     "babel": "^5.6.14",
     "conventional-changelog": "0.0.17",
