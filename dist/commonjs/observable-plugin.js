@@ -2,7 +2,13 @@
 
 exports.__esModule = true;
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
 
 var KnockoutObservable = (function () {
   function KnockoutObservable(observable) {
@@ -29,24 +35,24 @@ var KnockoutObservable = (function () {
     this._uploader.listen('onDeleteComplete', this._updateObservableDelete.bind(this));
   };
 
-  KnockoutObservable.prototype._updateObservableDelete = function _updateObservableDelete(id, xhr, isError) {
+  KnockoutObservable.prototype._updateObservableDelete = function _updateObservableDelete(id, xhr, isError, upload_path) {
     var name = this._uploader.fineuploader.getName(id);
 
     if (this._uploader.settings.limit === 1) {
       this._observable(null);
     } else {
-      this._observable.remove(name);
+      this._observable.remove(upload_path);
     }
   };
 
-  KnockoutObservable.prototype._updateObservableUpload = function _updateObservableUpload(id, name, responseJSON, xhr) {
+  KnockoutObservable.prototype._updateObservableUpload = function _updateObservableUpload(id, name, responseJSON, xhr, upload_path) {
     var type = responseJSON.type;
 
     if (type === 'upload') {
       if (this._uploader.settings.limit == 1) {
-        this._observable(name);
+        this._observable(upload_path);
       } else {
-        this._observable.push(name);
+        this._observable.push(upload_path);
       }
     }
   };
