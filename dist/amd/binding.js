@@ -18,36 +18,42 @@ define(['exports', 'knockout', 'jquery', 'fineuploader-client/index', 'fineuploa
   };
 
   var initialize = function initialise(element, valueAccessor, allBindings) {
-    var defaultSettings = _ko['default'].bindingHandlers.fineuploader.defaultSettings;
-    var inputSettings = allBindings.get('settings') || {};
-    var settings = _$['default'].extend({}, defaultSettings.uploaderSettings, inputSettings);
+    function setup() {
+      var defaultSettings = _ko['default'].bindingHandlers.fineuploader.defaultSettings;
+      var inputSettings = allBindings.get('settings') || {};
+      var settings = _$['default'].extend({}, defaultSettings.uploaderSettings, inputSettings);
 
-    if (_fineuploaderClientUtilities.isUndefined(settings.container)) {
-      var container = _$['default']('<div/>');
-      container.appendTo(_$['default'](element));
+      if (_fineuploaderClientUtilities.isUndefined(settings.container)) {
+        var container = _$['default']('<div/>');
+        container.appendTo(_$['default'](element));
 
-      settings.container = container;
-    }
+        settings.container = container;
+      }
 
-    if (!_fineuploaderClientUtilities.isArray(settings.plugins)) {
-      settings.plugins = [];
-    }
+      if (!_fineuploaderClientUtilities.isArray(settings.plugins)) {
+        settings.plugins = [];
+      }
 
-    var observable = valueAccessor();
-    if (_ko['default'].isObservable(observable)) {
-      var observablePlugin = new _observablePlugin.KnockoutObservable(observable);
-      settings.plugins.push(observablePlugin);
-    } else if (_fineuploaderClientUtilities.isString(observable) && observable !== '') {
-      settings.session = observable;
-    }
+      var observable = valueAccessor();
+      if (_ko['default'].isObservable(observable)) {
+        var observablePlugin = new _observablePlugin.KnockoutObservable(observable);
+        settings.plugins.push(observablePlugin);
+      } else if (_fineuploaderClientUtilities.isString(observable) && observable !== '') {
+        settings.session = observable;
+      }
 
-    var engineResolver = allBindings.get('engineResolver') || defaultSettings.engineResolver;
-    var loaderResolver = allBindings.get('loaderResolver') || defaultSettings.loaderResolver;
-    var uploader = new _fineuploaderClientIndex.Uploader(settings, engineResolver(), loaderResolver());
+      var engineResolver = allBindings.get('engineResolver') || defaultSettings.engineResolver;
+      var loaderResolver = allBindings.get('loaderResolver') || defaultSettings.loaderResolver;
+      var uploader = new _fineuploaderClientIndex.Uploader(settings, engineResolver(), loaderResolver());
 
-    var instance = allBindings.get('instance') || false;
-    if (_ko['default'].isObservable(instance)) {
-      instance(uploader);
+      var instance = allBindings.get('instance') || false;
+      if (_ko['default'].isObservable(instance)) {
+        instance(uploader);
+      }
+
+      uploader.initialize();
+
+      return uploader;
     }
 
     var initializer = allBindings.get('initializer') || false;
@@ -55,18 +61,20 @@ define(['exports', 'knockout', 'jquery', 'fineuploader-client/index', 'fineuploa
     if (_ko['default'].isObservable(initializer)) {
       var subscription = initializer.subscribe(function (newValue) {
         if (newValue) {
-          uploader.initialize();
+          setup();
         }
       });
 
       if (initializer()) {
-        uploader.initialize();
+        setup();
         subscription.dispose();
       }
 
       _ko['default'].utils.domNodeDisposal.addDisposeCallback(element, function () {
         subscription.dispose();
       });
+    } else {
+      setup();
     }
 
     return { controlsDescendantBindings: true };
