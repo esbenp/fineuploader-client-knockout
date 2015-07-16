@@ -79,5 +79,8 @@ var initialize = function initialise(element, valueAccessor, allBindings)
 
 ko.bindingHandlers.fineuploader = {
   defaultSettings: defaultSettings,
+  extend: function(settings) {
+    $.extend(this.defaultSettings, settings);
+  },
   init: initialize
 };

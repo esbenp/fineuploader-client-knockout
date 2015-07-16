@@ -86,6 +86,9 @@ System.register(['knockout', 'jquery', 'fineuploader-client/index', 'fineuploade
 
       ko.bindingHandlers.fineuploader = {
         defaultSettings: defaultSettings,
+        extend: function extend(settings) {
+          $.extend(this.defaultSettings, settings);
+        },
         init: initialize
       };
     }

@@ -74,6 +74,9 @@ define(['exports', 'knockout', 'jquery', 'fineuploader-client/index', 'fineuploa
 
   _ko['default'].bindingHandlers.fineuploader = {
     defaultSettings: defaultSettings,
+    extend: function extend(settings) {
+      _$['default'].extend(this.defaultSettings, settings);
+    },
     init: initialize
   };
 });

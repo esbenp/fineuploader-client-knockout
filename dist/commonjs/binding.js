@@ -85,5 +85,8 @@ var initialize = function initialise(element, valueAccessor, allBindings) {
 
 _knockout2['default'].bindingHandlers.fineuploader = {
   defaultSettings: defaultSettings,
+  extend: function extend(settings) {
+    _jquery2['default'].extend(this.defaultSettings, settings);
+  },
   init: initialize
 };
