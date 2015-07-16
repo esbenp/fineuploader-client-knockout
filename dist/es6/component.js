@@ -4,13 +4,14 @@ import binding from './binding';
 
 ko.components.register('fineuploader', {
     template: '<div data-bind="fineuploader: observable, ' +
-      'initializer: initializer, settings: settings, ' +
+      'initializer: initializer, settings: settings, instance: instance, ' +
       'engineResolver: engineResolver, loaderResolver: loaderResolver' +
       '"></div>',
     viewModel: function(params) {
       var defaults = {
         initializer: false,
         settings: {},
+        instance: false,
         engineResolver: false,
         loaderResolver: false
       };

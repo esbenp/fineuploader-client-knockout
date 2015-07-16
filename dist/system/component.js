@@ -13,11 +13,12 @@ System.register(['knockout', 'jquery', './binding'], function (_export) {
     execute: function () {
 
       ko.components.register('fineuploader', {
-        template: '<div data-bind="fineuploader: observable, ' + 'initializer: initializer, settings: settings, ' + 'engineResolver: engineResolver, loaderResolver: loaderResolver' + '"></div>',
+        template: '<div data-bind="fineuploader: observable, ' + 'initializer: initializer, settings: settings, instance: instance, ' + 'engineResolver: engineResolver, loaderResolver: loaderResolver' + '"></div>',
         viewModel: function viewModel(params) {
           var defaults = {
             initializer: false,
             settings: {},
+            instance: false,
             engineResolver: false,
             loaderResolver: false
           };

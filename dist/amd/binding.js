@@ -45,6 +45,11 @@ define(['exports', 'knockout', 'jquery', 'fineuploader-client/index', 'fineuploa
     var loaderResolver = allBindings.get('loaderResolver') || defaultSettings.loaderResolver;
     var uploader = new _fineuploaderClientIndex.Uploader(settings, engineResolver(), loaderResolver());
 
+    var instance = allBindings.get('instance') || false;
+    if (_ko['default'].isObservable(instance)) {
+      instance(uploader);
+    }
+
     var initializer = allBindings.get('initializer') || false;
 
     if (_ko['default'].isObservable(initializer)) {

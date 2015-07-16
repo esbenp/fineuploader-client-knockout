@@ -10,11 +10,12 @@ define(['exports', 'knockout', 'jquery', './binding'], function (exports, _knock
   var _binding2 = _interopRequireDefault(_binding);
 
   _ko['default'].components.register('fineuploader', {
-    template: '<div data-bind="fineuploader: observable, ' + 'initializer: initializer, settings: settings, ' + 'engineResolver: engineResolver, loaderResolver: loaderResolver' + '"></div>',
+    template: '<div data-bind="fineuploader: observable, ' + 'initializer: initializer, settings: settings, instance: instance, ' + 'engineResolver: engineResolver, loaderResolver: loaderResolver' + '"></div>',
     viewModel: function viewModel(params) {
       var defaults = {
         initializer: false,
         settings: {},
+        instance: false,
         engineResolver: false,
         loaderResolver: false
       };

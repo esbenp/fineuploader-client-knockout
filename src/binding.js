@@ -50,6 +50,11 @@ var initialize = function initialise(element, valueAccessor, allBindings)
   var loaderResolver = allBindings.get('loaderResolver') || defaultSettings.loaderResolver;
   var uploader = new Uploader(settings, engineResolver(), loaderResolver());
 
+  var instance = allBindings.get('instance') || false;
+  if (ko.isObservable(instance)) {
+    instance(uploader);
+  }
+
   var initializer = allBindings.get('initializer') || false;
 
   if (ko.isObservable(initializer)) {
