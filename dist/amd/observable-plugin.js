@@ -16,8 +16,24 @@ define(['exports', 'jquery'], function (exports, _jquery) {
       this._observable = observable;
     }
 
+    KnockoutObservable.prototype.addFile = function addFile(upload_path) {
+      if (this._uploader.settings.limit == 1) {
+        this._observable(upload_path);
+      } else {
+        this._observable.push(upload_path);
+      }
+    };
+
     KnockoutObservable.prototype.getObservable = function getObservable() {
       return this._observable;
+    };
+
+    KnockoutObservable.prototype.removeFile = function removeFile(upload_path) {
+      if (this._uploader.settings.limit === 1) {
+        this._observable(null);
+      } else {
+        this._observable.remove(upload_path);
+      }
     };
 
     KnockoutObservable.prototype.populateSession = function populateSession() {
@@ -41,22 +57,14 @@ define(['exports', 'jquery'], function (exports, _jquery) {
     KnockoutObservable.prototype._updateObservableDelete = function _updateObservableDelete(id, xhr, isError, upload_path) {
       var name = this._uploader.fineuploader.getName(id);
 
-      if (this._uploader.settings.limit === 1) {
-        this._observable(null);
-      } else {
-        this._observable.remove(upload_path);
-      }
+      this.removeFile(upload_path);
     };
 
     KnockoutObservable.prototype._updateObservableUpload = function _updateObservableUpload(id, name, responseJSON, xhr, upload_path) {
       var type = responseJSON.type;
 
       if (type === 'upload') {
-        if (this._uploader.settings.limit == 1) {
-          this._observable(upload_path);
-        } else {
-          this._observable.push(upload_path);
-        }
+        this.addFile(upload_path);
       }
     };
 
