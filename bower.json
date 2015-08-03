@@ -16,6 +16,6 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "fineuploader-client": "0.3.*"
+    "fineuploader-client": "0.4.*"
   }
 }
