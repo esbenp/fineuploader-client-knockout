@@ -17,6 +17,10 @@ System.register(['jquery'], function (_export) {
           this._observable = observable;
         }
 
+        KnockoutObservable.prototype.getObservable = function getObservable() {
+          return this._observable;
+        };
+
         KnockoutObservable.prototype.populateSession = function populateSession() {
           if (!this._uploader.isInitialized()) {
             this._uploader.setSession(this._observable());

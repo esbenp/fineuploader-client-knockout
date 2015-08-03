@@ -5,6 +5,10 @@ export class KnockoutObservable {
     this._observable = observable;
   }
 
+  getObservable() {
+    return this._observable;
+  }
+
   populateSession() {
     if (!this._uploader.isInitialized()) {
       this._uploader.setSession(this._observable());
