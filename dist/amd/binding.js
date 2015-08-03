@@ -30,14 +30,14 @@ define(['exports', 'knockout', 'jquery', 'fineuploader-client/index', 'fineuploa
         settings.container = container;
       }
 
-      if (!_fineuploaderClientUtilities.isArray(settings.plugins)) {
-        settings.plugins = [];
+      if (!isObject(settings.plugins)) {
+        settings.plugins = {};
       }
 
       var observable = valueAccessor();
       if (_ko['default'].isObservable(observable)) {
         var observablePlugin = new _observablePlugin.KnockoutObservable(observable);
-        settings.plugins.push(observablePlugin);
+        settings.plugins.knockoutObservable = observablePlugin;
       } else if (_fineuploaderClientUtilities.isString(observable) && observable !== '') {
         settings.session = observable;
       }

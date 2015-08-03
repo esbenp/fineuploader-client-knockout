@@ -35,14 +35,14 @@ var initialize = function initialise(element, valueAccessor, allBindings)
       settings.container = container;
     }
 
-    if (!isArray(settings.plugins)) {
-      settings.plugins = [];
+    if (!isObject(settings.plugins)) {
+      settings.plugins = {};
     }
 
     var observable = valueAccessor();
     if (ko.isObservable(observable)) {
       var observablePlugin = new KnockoutObservable(observable);
-      settings.plugins.push(observablePlugin);
+      settings.plugins.knockoutObservable = observablePlugin;
     } else if(isString(observable) && observable !== "") {
       settings.session = observable;
     }
