@@ -1,3 +1,12 @@
+<a name"0.6.1"></a>
+### 0.6.1 (2015-08-11)
+
+
+#### Bug Fixes
+
+* utility importing ([e99d8962](http://github.com/esbenp/fineuploader-client-knockout.git/commit/e99d8962))
+
+
 <a name"0.6.0"></a>
 ## 0.6.0 (2015-08-03)
 

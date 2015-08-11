@@ -1,6 +1,6 @@
 {
   "name": "fineuploader-client-knockout",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "homepage": "https://github.com/esbenp/fineuploader-client-knockout",
   "main": "index.js",
   "authors": [
