@@ -3,6 +3,7 @@ import $ from 'jquery';
 import {Uploader} from 'fineuploader-client/index';
 import {
   isArray,
+  isObject,
   isString,
   isUndefined
 } from 'fineuploader-client/utilities';

@@ -41,7 +41,7 @@ var initialize = function initialise(element, valueAccessor, allBindings) {
       settings.container = container;
     }
 
-    if (!isObject(settings.plugins)) {
+    if (!_fineuploaderClientUtilities.isObject(settings.plugins)) {
       settings.plugins = {};
     }
 

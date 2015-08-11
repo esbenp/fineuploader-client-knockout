@@ -30,7 +30,7 @@ define(['exports', 'knockout', 'jquery', 'fineuploader-client/index', 'fineuploa
         settings.container = container;
       }
 
-      if (!isObject(settings.plugins)) {
+      if (!_fineuploaderClientUtilities.isObject(settings.plugins)) {
         settings.plugins = {};
       }
 

@@ -1,7 +1,7 @@
 System.register(['knockout', 'jquery', 'fineuploader-client/index', 'fineuploader-client/utilities', './observable-plugin', './template-engine'], function (_export) {
   'use strict';
 
-  var ko, $, Uploader, isArray, isString, isUndefined, KnockoutObservable, KnockoutEngine, defaultSettings, initialize;
+  var ko, $, Uploader, isArray, isObject, isString, isUndefined, KnockoutObservable, KnockoutEngine, defaultSettings, initialize;
   return {
     setters: [function (_knockout) {
       ko = _knockout['default'];
@@ -11,6 +11,7 @@ System.register(['knockout', 'jquery', 'fineuploader-client/index', 'fineuploade
       Uploader = _fineuploaderClientIndex.Uploader;
     }, function (_fineuploaderClientUtilities) {
       isArray = _fineuploaderClientUtilities.isArray;
+      isObject = _fineuploaderClientUtilities.isObject;
       isString = _fineuploaderClientUtilities.isString;
       isUndefined = _fineuploaderClientUtilities.isUndefined;
     }, function (_observablePlugin) {
